@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "unocss -o \"assets/css/uno.css\" \"assets/**/*.html\" --watch",
+    "build": "unocss -m -o \"assets/css/uno.css\" \"assets/**/*.html\""
+  },
+	"devDependencies": {
+		"@unocss/cli": "^0.58.5"
+	}
+}

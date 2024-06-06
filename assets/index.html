@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+    <link href="/assets/css/reset.css" rel="stylesheet" />
+    <link href="/assets/css/uno.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="m-4">
+        <h1 class="text-blue">Film List</h1>
+
+        <ul class="" id="film-list">
+          {{ range .Films }} {{ block "film-list-element" .}}
+          <li class="bg-blue text-white">{{ .Title }} - {{ .Director }}</li>
+          {{ end }} {{ end }}
+        </ul>
+      </div>
+
+      <div class="m-4">
+        <h1 class="text-blue">Add Film</h1>
+
+        <form
+          class="flex flex-col gap-4"
+          hx-post="/add-film/"
+          hx-target="#film-list"
+          hx-swap="beforeend"
+        >
+          <div class="flex flex-col">
+            <label for="film-title">Title</label>
+            <input type="text" name="title" id="film-title" class="" />
+          </div>
+          <div class="flex flex-col">
+            <label for="film-director">Director</label>
+            <input type="text" name="director" id="film-director" class="" />
+          </div>
+          <button type="submit" class="">
+            <!-- <span -->
+            <!--   class="spinner-border spinner-border-sm htmx-indicator" -->
+            <!--   id="spinner" -->
+            <!--   role="status" -->
+            <!--   aria-hidden="true" -->
+            <!-- ></span> -->
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script
+    defer
+    src="https://unpkg.com/htmx.org@1.9.10"
+    integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+    crossorigin="anonymous"
+  ></script>
+</html>
