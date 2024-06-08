@@ -9,6 +9,7 @@ import (
 type Film struct {
 	Title    string
 	Director string
+	Year     int
 }
 
 func main() {
@@ -16,9 +17,9 @@ func main() {
 		tmpl := template.Must(template.ParseFiles("assets/index.html"))
 		films := map[string][]Film{
 			"Films": {
-				{Title: "The Godfather", Director: "Francis Ford Coppola"},
-				{Title: "Blade Runner", Director: "Ridley Scott"},
-				{Title: "The Thing", Director: "John Carpenter"},
+				{Title: "The Godfather", Director: "Francis Ford Coppola", Year: 1972},
+				{Title: "Blade Runner", Director: "Ridley Scott", Year: 1982},
+				{Title: "The Thing", Director: "John Carpenter", Year: 1982},
 			},
 		}
 		tmpl.Execute(w, films)

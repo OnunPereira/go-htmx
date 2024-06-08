@@ -6,6 +6,7 @@
     <title>Document</title>
     <link href="/assets/css/reset.css" rel="stylesheet" />
     <link href="/assets/css/uno.css" rel="stylesheet" />
+    <link href="" rel="stylesheet" />
   </head>
   <body>
     <div class="flex">
@@ -14,7 +15,9 @@
 
         <ul class="" id="film-list">
           {{ range .Films }} {{ block "film-list-element" .}}
-          <li class="bg-blue text-white">{{ .Title }} - {{ .Director }}</li>
+          <li class="bg-blue text-white">
+            {{ .Title }} - {{ .Director }}<span class="">{{ .Year }}</span>
+          </li>
           {{ end }} {{ end }}
         </ul>
       </div>
