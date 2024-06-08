@@ -29,6 +29,8 @@ jobs:
         run: go test -v ./...
 
   publish-docker:
+    needs:
+      - build-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
