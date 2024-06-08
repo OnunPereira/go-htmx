@@ -22,7 +22,11 @@ func main() {
 				{Title: "The Thing", Director: "John Carpenter", Year: 1982},
 			},
 		}
-		tmpl.Execute(w, films)
+
+		err := tmpl.Execute(w, films)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 	}
 
 	h2 := func(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +34,11 @@ func main() {
 		director := r.PostFormValue("director")
 
 		tmpl := template.Must(template.ParseFiles("assets/index.html"))
-		tmpl.ExecuteTemplate(w, "film-list-element", Film{Title: title, Director: director})
+
+		err := tmpl.ExecuteTemplate(w, "film-list-element", Film{Title: title, Director: director})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 
 		// htmlStr := fmt.Sprintf("<li class='bg-blue text-white'>%s - %s</li>", title, director)
 		// tmpl, _ := template.New("t").Parse(htmlStr)
